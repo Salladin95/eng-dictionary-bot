@@ -37,7 +37,7 @@ export const formatWord = (word: WordDefinition) => {
 		word: word.word,
 		transcription: word.phonetic,
 		meanings,
-		audio
+		audio,
 	};
 
 	return formattedWord;

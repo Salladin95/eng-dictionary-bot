@@ -1,4 +1,4 @@
-import { Message } from 'https://deno.land/x/grammy_types@v3.1.1/message.ts';
+import { GrammyTypes } from "../../../deps.ts";
 import { getTags } from './workingWithText.ts';
 
 export type IProfile = {
@@ -9,7 +9,7 @@ export type IProfile = {
 	stack: string[];
 };
 
-export const getProfileFromMsg = (msg: Message): IProfile | null => {
+export const getProfileFromMsg = (msg: GrammyTypes.Message): IProfile | null => {
 	if (msg.from && msg.text) {
 		return {
 			messageId: msg.message_id,

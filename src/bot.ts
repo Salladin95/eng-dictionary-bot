@@ -1,7 +1,8 @@
-import 'https://deno.land/std@0.187.0/dotenv/load.ts';
-
+import { env } from '../config.ts';
+import { Grammy } from "../deps.ts";
 import launchBot from './services/launchBot.ts';
 
-const token = Deno.env.get('BOT_TOKEN');
+export const token = env['BOT_TOKEN'];
+export const bot = new Grammy.Bot(token);
 
-token && launchBot(token);
+token && launchBot();

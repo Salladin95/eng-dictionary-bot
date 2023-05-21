@@ -1,6 +1,6 @@
-import { grammy } from "../../../deps.ts";
+import { Grammy } from '../../../deps.ts';
 
-const onGroupMsg = (ctx: grammy.Context, next: grammy.NextFunction) => {
+const onGroupMsg = (ctx: Grammy.Context, next: Grammy.NextFunction) => {
 	const { message } = ctx;
 
 	if (message?.new_chat_members || !message || !message.text) {

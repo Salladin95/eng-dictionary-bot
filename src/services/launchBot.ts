@@ -1,11 +1,10 @@
-import { grammy } from '../../deps.ts';
+import { Grammy } from '../../deps.ts';
+import { bot } from "../bot.ts";
 import onGroupMsg from '../services/messageHandlers/onGroupMsg.ts';
 import onPrivateMsg from '../services/messageHandlers/onPrivateMsg.ts';
 import greetNewMembers from './messageHandlers/greeting.ts';
 
-const launchBot = (token: string) => {
-	const bot = new grammy.Bot(token);
-
+const launchBot = () => {
 	bot.command(
 		'start',
 		(ctx) => ctx.reply('Welcome! Send me a word...'),
@@ -29,9 +28,9 @@ const launchBot = (token: string) => {
 		const ctx = err.ctx;
 		console.error(`Error while handling update ${ctx.update.update_id}:`);
 		const e = err.error;
-		if (e instanceof grammy.GrammyError) {
+		if (e instanceof Grammy.GrammyError) {
 			console.error('Error in request:', e.description);
-		} else if (e instanceof grammy.HttpError) {
+		} else if (e instanceof Grammy.HttpError) {
 			console.error('Could not contact Telegram:', e);
 		} else {
 			console.error('Unknown error:', e);

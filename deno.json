@@ -1,9 +1,9 @@
 {
   "tasks": {
     "dev": "deno run --allow-read --allow-env --allow-net --watch ./src/bot.ts",
-    "start": "deno run --allow-read --allow-env --allow-net ./src/bot.ts",
+    "start": "deno run --allow-all ./src/bot.ts",
     "prod": "deno run --allow-all ./src/bot.ts",
-    "gen": "supabase gen types typescript --project-id yxruvgnitxbcbmiaovdz"
+    "gen": "supabase gen types typescript --project-id here-should-be-project-id"
   },
   "compilerOptions": {
     "allowJs": false,

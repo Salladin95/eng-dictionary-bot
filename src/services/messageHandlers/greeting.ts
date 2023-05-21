@@ -1,6 +1,6 @@
-import { grammy } from "../../../deps.ts";
+import { Grammy } from '../../../deps.ts';
 
-const greetNewMembers = (ctx: grammy.Context, next: grammy.NextFunction) => {
+const greetNewMembers = (ctx: Grammy.Context, next: Grammy.NextFunction) => {
 	ctx.reply('WELCOME TO OUR CHAT');
 
 	next();
