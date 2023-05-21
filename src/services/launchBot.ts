@@ -1,5 +1,5 @@
 import { Grammy } from '../../deps.ts';
-import { bot } from "../bot.ts";
+import { bot } from '../bot.ts';
 import onGroupMsg from '../services/messageHandlers/onGroupMsg.ts';
 import onPrivateMsg from '../services/messageHandlers/onPrivateMsg.ts';
 import greetNewMembers from './messageHandlers/greeting.ts';

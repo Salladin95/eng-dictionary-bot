@@ -1,8 +1,9 @@
-import { env } from '../config.ts';
+import 'https://deno.land/std@0.187.0/dotenv/load.ts';
+
+import { config } from '../config.ts';
 import { Grammy } from "../deps.ts";
 import launchBot from './services/launchBot.ts';
 
-export const token = env['BOT_TOKEN'];
-export const bot = new Grammy.Bot(token);
+export const bot = new Grammy.Bot(config.botToken);
 
-token && launchBot();
+launchBot();

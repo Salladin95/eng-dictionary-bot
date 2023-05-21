@@ -1,13 +1,10 @@
-FROM denoland/deno:1.33.3
+FROM denoland/deno:latest
 
 WORKDIR /usr/src/app
 
-COPY deps.ts .
+COPY . .
 
 RUN deno cache deps.ts
-
-ADD . .
-
 RUN deno cache ./src/bot.ts
 
 EXPOSE ${PORT}

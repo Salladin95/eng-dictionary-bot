@@ -1,3 +1,1 @@
-import { load } from "./deps.ts";
-
-export const env = await load();
+export const config = { botToken: Deno.env.get('BOT_TOKEN') ?? '' };
