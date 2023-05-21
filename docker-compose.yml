@@ -1,0 +1,32 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  app:
+    container_name: eng-dictionary-bot
+    image: eng-dictionary-bot
+    build: .
+    ports:
+      - ${PORT}:${PORT}
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 3s
+        max_attempts: 5
+        window: 60s
+    networks:
+      - net
+    volumes:
+      - ./src:/usr/src/app/src
+      - /usr/src/app/node_modules
+volumes:
+  pgdata:
+    driver: local
+  app:
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.220.0/24

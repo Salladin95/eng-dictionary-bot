@@ -1,9 +1,6 @@
-import {
-	Context,
-	NextFunction,
-} from 'https://deno.land/x/grammy@v1.16.0/mod.ts';
+import { grammy } from "../../../deps.ts";
 
-const onGroupMsg = (ctx: Context, next: NextFunction) => {
+const onGroupMsg = (ctx: grammy.Context, next: grammy.NextFunction) => {
 	const { message } = ctx;
 
 	if (message?.new_chat_members || !message || !message.text) {

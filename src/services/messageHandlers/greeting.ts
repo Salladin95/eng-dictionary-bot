@@ -1,9 +1,6 @@
-import {
-	Context,
-	NextFunction,
-} from 'https://deno.land/x/grammy@v1.16.0/mod.ts';
+import { grammy } from "../../../deps.ts";
 
-const greetNewMembers = (ctx: Context, next: NextFunction) => {
+const greetNewMembers = (ctx: grammy.Context, next: grammy.NextFunction) => {
 	ctx.reply('WELCOME TO OUR CHAT');
 
 	next();

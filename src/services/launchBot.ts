@@ -1,20 +1,14 @@
-import {
-	Bot,
-	Context,
-	GrammyError,
-	HttpError,
-} from 'https://deno.land/x/grammy@v1.16.0/mod.ts';
-
+import { grammy } from '../../deps.ts';
 import onGroupMsg from '../services/messageHandlers/onGroupMsg.ts';
 import onPrivateMsg from '../services/messageHandlers/onPrivateMsg.ts';
 import greetNewMembers from './messageHandlers/greeting.ts';
 
 const launchBot = (token: string) => {
-	const bot = new Bot(token);
+	const bot = new grammy.Bot(token);
 
 	bot.command(
 		'start',
-		(ctx: Context) => ctx.reply('Welcome! Send me a word...'),
+		(ctx) => ctx.reply('Welcome! Send me a word...'),
 	);
 
 	bot.chatType('private', (ctx, next) => onPrivateMsg(ctx, next));
@@ -35,9 +29,9 @@ const launchBot = (token: string) => {
 		const ctx = err.ctx;
 		console.error(`Error while handling update ${ctx.update.update_id}:`);
 		const e = err.error;
-		if (e instanceof GrammyError) {
+		if (e instanceof grammy.GrammyError) {
 			console.error('Error in request:', e.description);
-		} else if (e instanceof HttpError) {
+		} else if (e instanceof grammy.HttpError) {
 			console.error('Could not contact Telegram:', e);
 		} else {
 			console.error('Unknown error:', e);

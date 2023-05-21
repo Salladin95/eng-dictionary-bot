@@ -1,12 +1,8 @@
-import {
-	Context,
-	NextFunction,
-} from 'https://deno.land/x/grammy@v1.16.0/mod.ts';
-
+import { grammy } from '../../../deps.ts';
 import { getWordDefinition } from '../../api/dictionaryApi/dictionaryApi.ts';
 import { renderWordDefnition } from '../../components/index.ts';
 
-const onPrivateMsg = (ctx: Context, next: NextFunction) => {
+const onPrivateMsg = (ctx: grammy.Context, next: grammy.NextFunction) => {
 	const { message } = ctx;
 
 	if (message?.new_chat_members || !message || !message.text) {

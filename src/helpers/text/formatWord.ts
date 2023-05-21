@@ -9,6 +9,7 @@ type Meaning = { partOfSpeech: string; definitions: FormattedDefinition[] };
 
 export const formatWord = (word: WordDefinition) => {
 	let meanings: Meaning[] = [];
+	const audio = word.phonetics.length ? word.phonetics[0].audio : '';
 
 	if (word.meanings.length) {
 		const slicedMeanings = word.meanings.splice(
@@ -34,9 +35,9 @@ export const formatWord = (word: WordDefinition) => {
 
 	const formattedWord = {
 		word: word.word,
-		audio: word.phonetics[0].audio,
 		transcription: word.phonetic,
 		meanings,
+		audio
 	};
 
 	return formattedWord;

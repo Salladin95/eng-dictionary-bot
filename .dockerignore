@@ -1,0 +1,5 @@
+**/.env
+**/.vscode
+fly.toml
+.git
+deno.lock
