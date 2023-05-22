@@ -7,7 +7,7 @@ services:
     branch: dev
     region: frankfurt # optional (defaults to oregon)
     plan: standard # optional (defaults to starter instance type)
-    rootDir: /usr/src/app
+    rootDir: ./
     dockerfilePath: ./Dockerfile
     dockerContext: ./
     healthCheckPath: /
