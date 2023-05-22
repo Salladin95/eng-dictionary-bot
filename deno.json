@@ -1,5 +1,6 @@
 {
   "tasks": {
+    "build": "deno cache .deps.ts & deno cache ./src/bot.ts",
     "dev": "deno run --allow-read --allow-env --allow-net --watch ./src/bot.ts",
     "start": "deno run --allow-all ./src/bot.ts",
     "prod": "deno run --allow-all ./src/bot.ts",
