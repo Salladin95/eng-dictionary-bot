@@ -33,5 +33,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "eng-dictionary-bot-dev"
-          entrypoint: "bot.ts" # 📝 Update the entrypoint
+          entrypoint: "./src/bot.ts" # 📝 Update the entrypoint
           root: "."
