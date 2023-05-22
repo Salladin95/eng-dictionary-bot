@@ -28,7 +28,7 @@ jobs:
           deno-version: ${{ matrix.deno-version }}
 
       - name: Build step
-        run: deno cache ./deps.ts & deno cache ./src/main.ts  # 📝 Update the build command(s)step
+        run: deno cache ./deps.ts & deno cache ./src/bot.ts  # 📝 Update the build command(s)step
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
