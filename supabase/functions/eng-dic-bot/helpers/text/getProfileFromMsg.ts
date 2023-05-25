@@ -1,4 +1,4 @@
-import { GrammyTypes } from '../../../deps.ts';
+import { Message } from '../../deps.ts';
 import { getTags } from './workingWithText.ts';
 
 export type IProfile = {
@@ -10,7 +10,7 @@ export type IProfile = {
 };
 
 export const getProfileFromMsg = (
-	msg: GrammyTypes.Message,
+	msg: Message,
 ): IProfile | null => {
 	if (msg.from && msg.text) {
 		return {

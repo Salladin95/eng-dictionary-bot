@@ -1,5 +1,4 @@
 import {
-	Definition,
 	WordDefinition,
 } from '../api/dictionaryApi/dictionaryApi.contracts.ts';
 import { FormattedDefinition, formatWord } from '../helpers/text/formatWord.ts';

@@ -1,9 +1,8 @@
 {
   "tasks": {
-    "build": "deno cache ./deps.ts & deno cache ./src/bot.ts",
-    "dev": "deno run --allow-read --allow-env --allow-net --watch ./src/bot.ts",
-    "start": "deno run --allow-all ./src/bot.ts",
-    "prod": "deno run --allow-all ./src/bot.ts",
+    "build": "deno cache ./supabase/functions/eng-dic-bot/deps.ts",
+    "dev": "supabase functions serve --no-verify-jwt --env-file ./supabase/functions/eng-dic-bot/.env eng-dic-bot",
+    "deploy": "supabase functions deploy eng-dic-bot --no-verify-jwt",
     "gen": "supabase gen types typescript --project-id here-should-be-project-id"
   },
   "compilerOptions": {
@@ -12,7 +11,7 @@
     "strict": true
   },
   "lint": {
-    "include": ["src/"],
+    "include": ["supabase/functions"],
     "exclude": ["src/testdata/"],
     "rules": {
       "tags": ["recommended"],
@@ -27,11 +26,11 @@
     "semiColons": true,
     "singleQuote": true,
     "proseWrap": "preserve",
-    "include": ["src/"],
-    "exclude": ["src/testdata/"]
+    "include": ["supabase/functions"],
+    "exclude": ["supabase/testdata/"]
   },
   "test": {
-    "include": ["src/"],
-    "exclude": ["src/testdata/"]
+    "include": ["supabase/"],
+    "exclude": ["supabase/testdata/"]
   }
 }

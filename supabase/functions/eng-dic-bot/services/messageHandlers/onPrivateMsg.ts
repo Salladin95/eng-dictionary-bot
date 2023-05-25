@@ -1,8 +1,9 @@
-import { Grammy } from '../../../deps.ts';
+import { Context, NextFunction } from '../../deps.ts';
+
 import { getWordDefinition } from '../../api/dictionaryApi/dictionaryApi.ts';
 import { renderWordDefnition } from '../../components/index.ts';
 
-const onPrivateMsg = (ctx: Grammy.Context, next: Grammy.NextFunction) => {
+const onPrivateMsg = (ctx: Context, next: NextFunction) => {
 	const { message } = ctx;
 
 	if (message?.new_chat_members || !message || !message.text) {
