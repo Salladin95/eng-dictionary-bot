@@ -6,7 +6,7 @@ import { renderWordDefnition } from '../../components/index.ts';
 const onPrivateMsg = (ctx: Context, next: NextFunction) => {
 	const { message } = ctx;
 
-	if (message?.new_chat_members || !message || !message.text) {
+	if (!message || !message.text) {
 		return;
 	}
 
