@@ -4,15 +4,18 @@ import {
 	greetNewMembers,
 	onGroupMsg,
 	onPrivateMsg,
-} from '../messageHandlers/index.ts';
-import onStart from '../messageHandlers/onStart.ts';
+} from '../../middlewares/messageHandlers/index.ts';
+import onStart from '../../middlewares/messageHandlers/onStart.ts';
 import { setMyCommands } from '../setCommands/setBotCommands.ts';
 import processRequest from './processRequest.ts';
+import setLangOptionsToRequest from '../../middlewares/updateRequest/setLangOptionsToReq.ts';
 
 const launchBot = (bot: MyBot) => {
 	console.log('BOT IS UP AND RUNNING');
 
 	setMyCommands(bot);
+
+	bot.use(setLangOptionsToRequest);
 
 	bot.command(
 		'start',

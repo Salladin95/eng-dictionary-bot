@@ -1,4 +1,5 @@
-import { Context, NextFunction } from '../../deps.ts';
+import { MyContext as Context } from '../../contracts.ts';
+import { NextFunction } from '../../deps.ts';
 
 const onGroupMsg = (ctx: Context, next: NextFunction) => {
 	const { message } = ctx;
