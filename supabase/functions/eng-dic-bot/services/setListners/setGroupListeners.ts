@@ -8,12 +8,12 @@ import {
 const setGroupListeners = (bot: MyBot) => {
 	bot.chatType(['group', 'supergroup']).on(
 		':new_chat_members',
-		(ctx, next) => onNewChatMember(ctx, next),
+		onNewChatMember,
 	);
 
 	bot.chatType(['group', 'supergroup']).on(
 		'msg',
-		(ctx, next) => onGroupMsg(ctx, next),
+		onGroupMsg,
 	);
 };
 

@@ -1,10 +1,7 @@
 import { MyContext } from '../../contracts.ts';
-import { NextFunction } from '../../deps.ts';
 
-const onNewChatMember = (ctx: MyContext, next: NextFunction) => {
+const onNewChatMember = (ctx: MyContext) => {
 	ctx.reply('WELCOME TO OUR CHAT');
-
-	next();
 };
 
 export default onNewChatMember;

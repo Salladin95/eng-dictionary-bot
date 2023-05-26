@@ -7,20 +7,20 @@ import {
 const setQueryListeners = (bot: MyBot) => {
 	bot.callbackQuery(
 		'bot-lang-en',
-		(ctx, next) => onChangeBotLang(ctx, next, 'en'),
+		(ctx) => onChangeBotLang(ctx, 'en'),
 	);
 	bot.callbackQuery(
 		'bot-lang-ru',
-		(ctx, next) => onChangeBotLang(ctx, next, 'ru'),
+		(ctx) => onChangeBotLang(ctx, 'ru'),
 	);
 
 	bot.callbackQuery(
 		'bot-trans-en',
-		(ctx, next) => onChangeTransLang(ctx, next, 'en'),
+		(ctx) => onChangeTransLang(ctx, 'en'),
 	);
 	bot.callbackQuery(
 		'bot-trans-ru',
-		(ctx, next) => onChangeTransLang(ctx, next, 'ru'),
+		(ctx) => onChangeTransLang(ctx, 'ru'),
 	);
 };
 

@@ -1,11 +1,10 @@
 import { MyContext as Context } from '../../contracts.ts';
-import { NextFunction } from '../../deps.ts';
 import {
 	createUserRecord,
 	getUserRecord,
 } from '../../services/dbFunctions/user/user.ts';
 
-const onStart = async (ctx: Context, next: NextFunction) => {
+const onStart = async (ctx: Context) => {
 	const { from } = ctx;
 	if (from) {
 		const user = await getUserRecord(from?.id);
