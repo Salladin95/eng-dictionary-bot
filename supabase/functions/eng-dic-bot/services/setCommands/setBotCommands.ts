@@ -1,12 +1,12 @@
 import { MyBot } from '../../contracts.ts';
-import { loadCommandsByLangTag } from "../dbFunctions/loadCommadsByLangTag.ts";
-
+import loadCommandsByLang from '../dbFunctions/command/index.ts';
 
 export const setMyCommands = async (bot: MyBot) => {
-	const commads = await loadCommandsByLangTag('en');
+	const commads = await loadCommandsByLang('en');
+
 	if (!commads || !commads.length) {
-    return;
+		return;
 	}
 
-  await bot.api.setMyCommands(commads);
+	await bot.api.setMyCommands(commads);
 };
