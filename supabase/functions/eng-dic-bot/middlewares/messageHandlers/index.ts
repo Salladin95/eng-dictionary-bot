@@ -1,5 +1,5 @@
-import greetNewMembers from './greeting.ts';
+import onNewChatMember from './onNewChatMember.ts';
 import onGroupMsg from './onGroupMsg.ts';
 import onPrivateMsg from './onPrivateMsg.ts';
 
-export { greetNewMembers, onGroupMsg, onPrivateMsg };
+export { onGroupMsg, onNewChatMember, onPrivateMsg };

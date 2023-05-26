@@ -3,12 +3,12 @@ import setCommandsListeners from './setCommandsListeners.ts';
 import setGroupListeners from './setGroupListeners.ts';
 import setMiddlewares from './setMiddleWares.ts';
 import setPrivateListeners from './setPrivateListeners.ts';
-import setQueriesListeners from './setQueriesListeners.ts';
+import setQueryListeners from './setQuerylisteners.ts';
 
 const setListeners = (bot: MyBot) => {
 	setMiddlewares(bot);
 	setCommandsListeners(bot);
-	setQueriesListeners(bot);
+	setQueryListeners(bot);
 	setPrivateListeners(bot);
 	setGroupListeners(bot);
 };
@@ -20,5 +20,5 @@ export {
 	setGroupListeners,
 	setMiddlewares,
 	setPrivateListeners,
-	setQueriesListeners,
+	setQueryListeners,
 };

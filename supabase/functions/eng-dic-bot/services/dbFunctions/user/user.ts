@@ -6,8 +6,11 @@ const createUserRecord = async (dto: CreateUserDto) => {
 	return user.data;
 };
 
-const updateUserRecord = async (dto: UpdateUserDto) => {
-	const user = await supabase.from('user').update(dto);
+const updateUserRecord = async (dto: UpdateUserDto, telegramId: number) => {
+	const user = await supabase.from('user').update(dto).eq(
+		'telegramId',
+		telegramId,
+	);
 	return user.data;
 };
 
