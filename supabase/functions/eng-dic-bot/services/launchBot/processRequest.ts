@@ -1,5 +1,12 @@
-import { config } from "../../config.ts";
-import { Api, Bot, Context, RawApi, serve, webhookCallback } from "../../deps.ts";
+import { config } from '../../config.ts';
+import {
+	Api,
+	Bot,
+	Context,
+	RawApi,
+	serve,
+	webhookCallback,
+} from '../../deps.ts';
 
 const processRequest = (
 	bot: Bot<Context, Api<RawApi>>,
@@ -9,7 +16,9 @@ const processRequest = (
 	serve(async (req) => {
 		try {
 			const url = new URL(req.url);
-			if (url.searchParams.get('secret') !== config.functionSecret || !req.headers) {
+			if (
+				url.searchParams.get('secret') !== config.functionSecret || !req.headers
+			) {
 				return new Response('Not allowed', { status: 405 });
 			}
 

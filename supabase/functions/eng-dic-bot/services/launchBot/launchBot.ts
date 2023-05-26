@@ -11,11 +11,16 @@ import processRequest from './processRequest.ts';
 const launchBot = (bot: MyBot) => {
 	console.log('BOT IS UP AND RUNNING');
 
-	setMyCommands(bot, commads);
-
+	setMyCommands(bot);
+	
 	bot.command(
 		'start',
 		(ctx) => ctx.reply('Welcome! Send me a word...'),
+	);
+
+	bot.command(
+		'help',
+		(ctx) => ctx.reply('Send me a word to get its description...'),
 	);
 
 	bot.chatType('private').on(':text', (ctx, next) => onPrivateMsg(ctx, next));

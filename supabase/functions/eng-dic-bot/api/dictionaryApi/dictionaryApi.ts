@@ -1,4 +1,4 @@
-import { axiod } from "../../deps.ts";
+import { axiod } from '../../deps.ts';
 import { WordDefinition } from './dictionaryApi.contracts.ts';
 
 export const getWordDefinition = async (word = '') => {
