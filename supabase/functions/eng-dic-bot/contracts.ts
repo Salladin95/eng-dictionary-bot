@@ -2,12 +2,12 @@ import { Api, Bot, Context, RawApi } from './deps.ts';
 import { LangOption } from './services/dbFunctions/user/user.contracts.ts';
 
 export interface BotLanguage {
-	botLanguage: string;
-	translationLanguage: string;
+	botLanguage: LangOption;
+	translationLanguage: LangOption;
 }
 
 export type MyContext = Context & {
-	langCongfig: BotLanguage;
+	langConfig: BotLanguage;
 };
 
 export type MyBot = Bot<MyContext, Api<RawApi>>;

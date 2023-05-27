@@ -1,4 +1,5 @@
 import { MyContext } from '../../contracts.ts';
+import translator from '../../locales/initTranslator.ts';
 import { LangOption } from '../../services/dbFunctions/user/user.contracts.ts';
 import { updateUserRecord } from '../../services/dbFunctions/user/user.ts';
 
@@ -9,9 +10,15 @@ const onChangeTransLang = async (
 	const { from } = ctx;
 	if (from) {
 		await updateUserRecord({ translationLang: option }, from.id);
-		await ctx.answerCallbackQuery({
-			text: 'You will receive translations in English',
-		});
+		const msg = translator(
+			option,
+			'queryReplyTransLangChange',
+		);
+		if (msg) {
+			await ctx.answerCallbackQuery({
+				text: msg,
+			});
+		}
 	}
 };
 

@@ -1,12 +1,15 @@
 import { Database } from '../../../types/supabase.ts';
 
 export type LangOption = 'ru' | 'en';
-export type User = Database['public']['Tables']['user']['Row'];
-export type CreatUserDto = Pick<User, 'firstName' | 'telegramId'>;
-export type CreateUserDto = Database['public']['Tables']['user']['Insert'];
-export type UpdateUserDto =
+export type WithLangOptions<T> =
 	& Omit<
-		Database['public']['Tables']['user']['Update'],
+		T,
 		'botLang' | 'translationLang'
 	>
 	& { botLang?: LangOption; translationLang?: LangOption };
+
+export type User = WithLangOptions<Database['public']['Tables']['user']['Row']>;
+export type CreateUserDto = Pick<User, 'firstName' | 'telegramId'>;
+export type UpdateUserDto = WithLangOptions<
+	Database['public']['Tables']['user']['Update']
+>;

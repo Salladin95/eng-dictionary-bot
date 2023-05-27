@@ -1,7 +1,10 @@
 import { MyContext } from '../../contracts.ts';
+import translator from '../../locales/initTranslator.ts';
 
 const onHelp = (ctx: MyContext) => {
-	ctx.reply('Send me a word to get its description...');
+	const { langConfig } = ctx;
+	const reply = translator(langConfig.botLanguage, 'help');
+	reply && ctx.reply(reply);
 };
 
 export default onHelp;

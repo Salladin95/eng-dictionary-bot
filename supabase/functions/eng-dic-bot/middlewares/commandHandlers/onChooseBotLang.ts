@@ -1,10 +1,11 @@
 import { MyContext } from '../../contracts.ts';
-import { selectTranslatesLang } from '../../services/inlineKeybord/index.ts';
+import translator from '../../locales/initTranslator.ts';
+import { selectBotLang } from '../../services/inlineKeyboard/selectBotLang.ts';
 
 const onChooseBotLang = (ctx: MyContext) => {
-	ctx.reply('Select translate\'s language', {
-		reply_markup: selectTranslatesLang,
-	});
+	const { langConfig } = ctx;
+	const reply = translator(langConfig.botLanguage, 'selectBotLang');
+	reply && ctx.reply(reply, { reply_markup: selectBotLang });
 };
 
 export default onChooseBotLang;

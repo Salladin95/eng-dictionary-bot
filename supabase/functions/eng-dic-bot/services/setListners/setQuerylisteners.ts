@@ -15,11 +15,11 @@ const setQueryListeners = (bot: MyBot) => {
 	);
 
 	bot.callbackQuery(
-		'bot-trans-en',
+		'trans-lang-en',
 		(ctx) => onChangeTransLang(ctx, 'en'),
 	);
 	bot.callbackQuery(
-		'bot-trans-ru',
+		'trans-lang-ru',
 		(ctx) => onChangeTransLang(ctx, 'ru'),
 	);
 };

@@ -6,12 +6,13 @@ const setLangOptionsToRequest = async (ctx: MyContext, next: NextFunction) => {
 	const { from } = ctx;
 	if (from) {
 		const user = await getUserRecord(from.id);
-		console.log(user);
+		const botLanguage = user?.botLang === 'en' ? 'en' : 'ru';
+		const translationLanguage = user?.translationLang === 'en' ? 'en' : 'ru';
 		const langConfig: BotLanguage = {
-			botLanguage: user?.botLang ?? 'en',
-			translationLanguage: user?.translationLang ?? 'en',
+			botLanguage,
+			translationLanguage,
 		};
-		ctx.langCongfig = langConfig;
+		ctx.langConfig = langConfig;
 	}
 	next();
 };
