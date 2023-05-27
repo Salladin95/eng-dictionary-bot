@@ -14,27 +14,25 @@ import {
 export function renderWordDefnition(rowWord: WordDefinition) {
 	const { word, transcription, meanings } = formatWord(rowWord);
 
-	const synonymsByHtml = (synonyms: string[]) => {
-		return synonyms.reduce(
-			(acc, synonym) => {
-				acc += wrapKeyByItalicValueByBold('synonyms', synonym);
-				return acc;
-			},
-			'',
-		);
-	};
+	const synonymsByHtml = (values: string[]) => {
+	const synonyms = values.reduce(
+		(acc, text) => acc + wrapByItalic(text) + ', ',
+		'',
+	);
+	return synonyms.trim().slice(0, synonyms.length - 2) + '.';
+};
 
 	const definitionsByHtml = (definitions: FormattedDefinition[]) => {
 		return definitions.reduce(
 			(acc, { definition, example, synonyms }) => {
 				acc += wrapKeyByItalicValueByBold('definition', definition);
+				if (synonyms.length) {
+					acc += wrapKeyByItalicValueByBold('synonyms', synonymsByHtml(synonyms));
+				}
 				if (example) {
 					acc += wrapKeyByItalicValueByBold('example', example, true);
 				} else {
 					acc += '\n';
-				}
-				if (synonyms.length) {
-					acc += synonymsByHtml(synonyms);
 				}
 				return acc;
 			},
@@ -43,11 +41,8 @@ export function renderWordDefnition(rowWord: WordDefinition) {
 	};
 
 	const meaningsByHtml = meanings.reduce(
-		(acc, { partOfSpeech, definitions, synonyms }) => {
+		(acc, { partOfSpeech, definitions }) => {
 			acc += wrapKeyByItalicValueByBold('Part of speech', partOfSpeech + ';');
-			if (synonyms?.length) {
-				acc += synonymsByHtml(synonyms);
-			}
 			acc += definitionsByHtml(definitions);
 			return acc;
 		},
