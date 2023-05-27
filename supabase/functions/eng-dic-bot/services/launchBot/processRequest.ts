@@ -1,4 +1,5 @@
 import { config } from '../../config.ts';
+import { MyBot } from '../../contracts.ts';
 import {
 	Api,
 	Bot,
@@ -9,7 +10,7 @@ import {
 } from '../../deps.ts';
 
 const processRequest = (
-	bot: Bot<Context, Api<RawApi>>,
+	bot: MyBot,
 ) => {
 	const handleUpdate = webhookCallback(bot, 'std/http');
 
