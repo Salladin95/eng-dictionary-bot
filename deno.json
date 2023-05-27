@@ -3,6 +3,7 @@
     "build": "deno cache ./supabase/functions/eng-dic-bot/deps.ts",
     "dev": "supabase functions serve --no-verify-jwt --env-file ./supabase/functions/eng-dic-bot/.env eng-dic-bot",
     "deploy": "supabase functions deploy eng-dic-bot --no-verify-jwt",
+    "setSecrets": "supabase functions set --env-file ./supabase/functions/eng-dic-bot/.env",
     "gen": "supabase gen types typescript --project-id yxruvgnitxbcbmiaovdz  --schema public > ./supabase/functions/eng-dic-bot/types/supabase.ts"
 
   },

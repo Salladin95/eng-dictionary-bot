@@ -21,8 +21,7 @@ export function renderYandexResponse(rowWord: Def[]) {
 	const renderTranslations = (translations: Tr[]) => {
 		const textTranslations = translations.reduce(
 			(acc, { text, pos, syn }) => {
-				acc += wrapKeyByItalicValueByBold('Можно перевести как ', text) +
-					wrapKeyByItalicValueByBold('Часть речи', pos);
+				acc += wrapKeyByItalicValueByBold('Можно перевести как', text);
 				if (syn) {
 					acc += 'Синонимы: ' + joinText(syn) + '\n\n';
 				} else {

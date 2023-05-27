@@ -34,15 +34,16 @@ const onPrivateMsg = async (ctx: Context) => {
 			const wordDictionaryTranslation = await getWordDefinition(message.text);
 			const { def } = translation;
 			if (def.length) {
-				ctx.reply(renderYandexResponse(def), { parse_mode: 'HTML' }).then(() => {
-				const audios = getAudios(wordDictionaryTranslation);
-				audios?.forEach(({ audio }) => {
-					if (audio && audio.length) {
-						ctx.replyWithAudio(audio);
-					}
-				});
-			});
-
+				ctx.reply(renderYandexResponse(def), { parse_mode: 'HTML' }).then(
+					() => {
+						const audios = getAudios(wordDictionaryTranslation);
+						audios?.forEach(({ audio }) => {
+							if (audio && audio.length) {
+								ctx.replyWithAudio(audio);
+							}
+						});
+					},
+				);
 			} else {
 				ctx.reply('Sth went wrong YANDEX API, try another word');
 			}
