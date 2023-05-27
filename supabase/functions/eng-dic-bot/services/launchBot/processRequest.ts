@@ -18,12 +18,14 @@ const processRequest = (
 		try {
 			const url = new URL(req.url);
 			if (
-				url.searchParams.get('secret') !== config.functionSecret || !req.headers
+				url.searchParams.get('secret') !== config.functionSecret
 			) {
 				return new Response('Not allowed', { status: 405 });
 			}
 
-			return await handleUpdate(req);
+			if (req.headers) {
+				return await handleUpdate(req);
+			}
 		} catch (err) {
 			console.error(err);
 		}

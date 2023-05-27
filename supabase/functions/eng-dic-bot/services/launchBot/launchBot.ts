@@ -9,8 +9,8 @@ const launchBot = async (bot: MyBot) => {
 	await setMyCommands(bot);
 	setListeners(bot);
 
-	// bot.start(); // for develop
-	processRequest(bot); // for prod
+	bot.start(); // for develop
+	// processRequest(bot); // for prod
 
 	Deno.addSignalListener('SIGINT', () => bot.stop());
 	Deno.addSignalListener('SIGTERM', () => bot.stop());
