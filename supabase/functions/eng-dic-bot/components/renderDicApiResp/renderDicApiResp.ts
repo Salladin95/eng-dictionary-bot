@@ -48,8 +48,10 @@ export function renderDictionaryApiResponse(rowWord: wordDictionaryApiResp) {
 		},
 		'',
 	);
-
-	return `${wrapByBold(word, true)}${
-		wrapByItalic(transcription, true) + '\n'
-	}${meaningsHtml}`;
+	let result = wrapByBold(word, true);
+	if (transcription) {
+		result += wrapByItalic(transcription, true) + '\n'
+	}
+	result += meaningsHtml;
+	return result;
 }
