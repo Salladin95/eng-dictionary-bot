@@ -1,0 +1,24 @@
+name: Deploy English Dictionary Bot
+
+on:
+  push:
+    branches:
+      - dev       
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.ANON_KEY }}
+      PROJECT_ID: yxruvgnitxbcbmiaovdz
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: 1.0.0
+
+      - run: supabase functions deploy eng-dic-bot --no-verify-jwt --project-ref yxruvgnitxbcbmiaovdz
