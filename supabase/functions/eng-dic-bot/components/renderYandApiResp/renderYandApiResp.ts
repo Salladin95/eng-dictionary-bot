@@ -1,6 +1,10 @@
 import { Def, Tr } from '../../api/yandexApi/yandexApi.contracts.ts';
 import { joinArrayByComma } from '../../helpers/text/joinArrByComma.ts';
-import { wrapByBold, wrapByItalic, wrapKeyByBoldValueByItalic } from '../../helpers/wrapByTag.ts';
+import {
+	wrapByBold,
+	wrapByItalic,
+	wrapKeyByBoldValueByItalic,
+} from '../../helpers/wrapByTag.ts';
 
 export function renderYandexResponse(rowWord: Def[]) {
 	const renderTranslations = (translations: Tr[]) => {
@@ -30,7 +34,10 @@ export function renderYandexResponse(rowWord: Def[]) {
 				acc += wrapKeyByBoldValueByItalic('Транскрипция', ts + ';');
 			}
 			acc += wrapKeyByBoldValueByItalic('Часть речи', pos + ';');
-			acc += wrapByItalic('Следующие определения относятся к это части речи!', true) + '\n';
+			acc += wrapByItalic(
+				'Следующие определения относятся к это части речи!',
+				true,
+			) + '\n';
 			acc += renderTranslations(tr);
 			return acc;
 		},
