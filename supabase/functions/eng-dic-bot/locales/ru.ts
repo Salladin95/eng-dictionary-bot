@@ -5,4 +5,5 @@ export const ruTranslation = {
 	selectTransLang: 'Выбрать язык переводов...',
 	queryReplyBotLangChange: 'Язык бота изменен на русский!',
 	queryReplyTransLangChange: 'Язык переводов изменен на русский!',
+	wordNotFound: 'Слово не найдено, попробуйте другое слово...'
 };

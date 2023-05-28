@@ -5,4 +5,5 @@ export const enTranslation = {
 	selectTransLang: 'Select translation\'s language.',
 	queryReplyBotLangChange: 'Bot\'s language changed!',
 	queryReplyTransLangChange: 'Translation\'s language changed!',
+	wordNotFound: 'Word is not found, try another one...'
 };

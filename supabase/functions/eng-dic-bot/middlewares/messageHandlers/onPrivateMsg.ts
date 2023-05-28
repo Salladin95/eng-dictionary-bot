@@ -8,6 +8,7 @@ import {
 	renderYandexResponse,
 } from '../../components/index.ts';
 import sendAudios from '../../components/renderDicApiResp/getAudiosFromResp.ts';
+import translator from '../../locales/initTranslator.ts';
 
 const onPrivateMsg = async (ctx: Context) => {
 	const { message, langConfig } = ctx;
@@ -41,11 +42,13 @@ const onPrivateMsg = async (ctx: Context) => {
 					},
 				);
 			} else {
-				ctx.reply('Sth went wrong YANDEX API, try another word');
+				ctx.reply(translator(ctx.langConfig.translationLanguage, 'wordNotFound') ?? '');
 			}
 		}
-	} catch {
-		ctx.reply('Sth went wrong, try another word');
+	} catch (err) {
+		console.error('ON PRIVATE MESSAGE, API CALL ERROR')
+		console.error(err.message ?? JSON.stringify(err))
+		ctx.reply(translator(ctx.langConfig.translationLanguage, 'wordNotFound') ?? '');
 	}
 };
 
