@@ -1,4 +1,4 @@
-export interface WordDefinition {
+export interface wordDictionaryApiResp {
 	word: string;
 	phonetic: string;
 	phonetics: Phonetic[];

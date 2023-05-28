@@ -1,6 +1,6 @@
 import {
 	Definition,
-	WordDefinition,
+	wordDictionaryApiResp,
 } from '../../api/dictionaryApi/dictionaryApi.contracts.ts';
 import { getMaxLength } from '../getMaxLength.ts';
 
@@ -11,7 +11,7 @@ type Meaning = {
 	synonyms: string[];
 };
 
-export const formatWord = (word: WordDefinition) => {
+export const formatDicApiResp = (word: wordDictionaryApiResp) => {
 	let meanings: Meaning[] = [];
 	const audios = word.phonetics?.map((phonetic) => ({
 		audio: phonetic?.audio ?? '',

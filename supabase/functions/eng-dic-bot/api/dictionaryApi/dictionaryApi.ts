@@ -1,9 +1,9 @@
 import { dictionaryApiBaseUrl } from '../../constants.ts';
 import { axiod } from '../../deps.ts';
-import { WordDefinition } from './dictionaryApi.contracts.ts';
+import { wordDictionaryApiResp } from './dictionaryApi.contracts.ts';
 
-export const getWordDefinition = async (word = '') => {
-	const definition = await axiod.get<WordDefinition[]>(
+export const translateByDictionaryApi = async (word = '') => {
+	const definition = await axiod.get<wordDictionaryApiResp[]>(
 		`${dictionaryApiBaseUrl}${word}`,
 	);
 	return definition.data[0];

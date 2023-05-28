@@ -1,10 +1,13 @@
 import { MyContext as Context } from '../../contracts.ts';
 
-import { getWordDefinition } from '../../api/dictionaryApi/dictionaryApi.ts';
-import { renderWordDefnition } from '../../components/dictionaryApi/index.ts';
+import { translateByDictionaryApi } from '../../api/dictionaryApi/dictionaryApi.ts';
 import translateByYandex from '../../api/yandexApi/yandexApi.ts';
-import { renderYandexResponse } from '../../components/yandApi/index.ts';
-import getAudios from '../../components/dictionaryApi/getAudios.ts';
+import {
+	getAudios,
+	renderDictionaryApiResponse,
+	renderYandexResponse,
+} from '../../components/index.ts';
+import sendAudios from '../../components/renderDicApiResp/getAudiosFromResp.ts';
 
 const onPrivateMsg = async (ctx: Context) => {
 	const { message, langConfig } = ctx;
@@ -16,40 +19,32 @@ const onPrivateMsg = async (ctx: Context) => {
 
 	try {
 		if (langConfig.translationLanguage === 'en') {
-			const translation = await getWordDefinition(message.text);
-			const html = renderWordDefnition(translation);
+			const translation = await translateByDictionaryApi(message.text);
+			const html = renderDictionaryApiResponse(translation);
+
 			ctx.reply(html, { parse_mode: 'HTML' }).then(() => {
-				const audios = getAudios(translation);
-				audios?.forEach(({ audio }) => {
-					if (audio && audio.length) {
-						ctx.replyWithAudio(audio);
-					}
-				});
+				sendAudios(ctx, translation);
 			});
 		} else {
 			const translation = await translateByYandex(
 				text,
 				ctx.langConfig.translationLanguage,
 			);
-			const wordDictionaryTranslation = await getWordDefinition(message.text);
 			const { def } = translation;
 			if (def.length) {
 				ctx.reply(renderYandexResponse(def), { parse_mode: 'HTML' }).then(
-					() => {
-						const audios = getAudios(wordDictionaryTranslation);
-						audios?.forEach(({ audio }) => {
-							if (audio && audio.length) {
-								ctx.replyWithAudio(audio);
-							}
-						});
+					async () => {
+						const wordDictionaryTranslation = await translateByDictionaryApi(
+							message.text,
+						);
+						sendAudios(ctx, wordDictionaryTranslation);
 					},
 				);
 			} else {
 				ctx.reply('Sth went wrong YANDEX API, try another word');
 			}
 		}
-	} catch (err) {
-		console.error(err.message);
+	} catch {
 		ctx.reply('Sth went wrong, try another word');
 	}
 };

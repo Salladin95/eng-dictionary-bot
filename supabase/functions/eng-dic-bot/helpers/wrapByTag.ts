@@ -4,9 +4,9 @@ export const wrapByBold = (str: string, withOffset = false) =>
 export const wrapByItalic = (str: string, withOffset = false) =>
 	`<i>${str}</i>${withOffset ? '\n' : ''}`;
 
-export const wrapKeyByItalicValueByBold = (
+export const wrapKeyByBoldValueByItalic = (
 	key: string,
 	value: string,
 	withOffset = false,
 ) =>
-	`${wrapByItalic(key)}: ${wrapByBold(value, true)}${withOffset ? '\n' : ''}`;
+	`${wrapByBold(key)}: ${wrapByItalic(value, true)}${withOffset ? '\n' : ''}`;
