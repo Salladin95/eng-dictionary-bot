@@ -21,4 +21,4 @@ jobs:
         with:
           version: 1.0.0
 
-      - run: supabase functions deploy eng-dic-bot --no-verify-jwt --project-ref yxruvgnitxbcbmiaovdz
+      - run: supabase functions deploy eng-dic-bot --no-verify-jwt --project-ref $PROJECT_REF
