@@ -39,13 +39,12 @@ export function renderDictionaryApiResponse(rowWord: wordDictionaryApiResp) {
 	const meaningsHtml = meanings.reduce(
 		(acc, { partOfSpeech, definitions }) => {
 			acc += wrapKeyByBoldValueByItalic('Part of speech', partOfSpeech + ';');
+			acc += wrapByItalic('The following definitions are related to this part of speech!', true) + '\n';
 			acc += renderDefs(definitions);
 			return acc;
 		},
 		'',
 	);
 
-	return `${wrapByBold(word, true)}${
-		wrapByItalic(transcription, true)
-	}${meaningsHtml}`;
+	return `${wrapByBold(word, true)}${wrapByItalic(transcription, true) + '\n'}${meaningsHtml}`;
 }
