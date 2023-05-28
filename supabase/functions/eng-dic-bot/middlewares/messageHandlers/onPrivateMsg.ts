@@ -3,7 +3,6 @@ import { MyContext as Context } from '../../contracts.ts';
 import { translateByDictionaryApi } from '../../api/dictionaryApi/dictionaryApi.ts';
 import translateByYandex from '../../api/yandexApi/yandexApi.ts';
 import {
-	getAudios,
 	renderDictionaryApiResponse,
 	renderYandexResponse,
 } from '../../components/index.ts';
@@ -19,12 +18,13 @@ const onPrivateMsg = async (ctx: Context) => {
 	const { text } = message;
 
 	try {
+		const translationByDictionary = await translateByDictionaryApi(
+			message.text,
+		);
 		if (langConfig.translationLanguage === 'en') {
-			const translation = await translateByDictionaryApi(message.text);
-			const html = renderDictionaryApiResponse(translation);
-
+			const html = renderDictionaryApiResponse(translationByDictionary);
 			ctx.reply(html, { parse_mode: 'HTML' }).then(() => {
-				sendAudios(ctx, translation);
+				sendAudios(ctx, translationByDictionary);
 			});
 		} else {
 			const translation = await translateByYandex(
@@ -34,21 +34,22 @@ const onPrivateMsg = async (ctx: Context) => {
 			const { def } = translation;
 			if (def.length) {
 				ctx.reply(renderYandexResponse(def), { parse_mode: 'HTML' }).then(
-					async () => {
-						const wordDictionaryTranslation = await translateByDictionaryApi(
-							message.text,
-						);
-						sendAudios(ctx, wordDictionaryTranslation);
-					},
+					() => sendAudios(ctx, translationByDictionary),
 				);
 			} else {
-				ctx.reply(translator(ctx.langConfig.translationLanguage, 'wordNotFound') ?? '');
+				ctx.reply(
+					translator(ctx.langConfig.translationLanguage, 'wordNotFound') ??
+						'Not found',
+				);
 			}
 		}
 	} catch (err) {
-		console.error('ON PRIVATE MESSAGE, API CALL ERROR')
-		console.error(err.message ?? JSON.stringify(err))
-		ctx.reply(translator(ctx.langConfig.translationLanguage, 'wordNotFound') ?? '');
+		console.warn('ON PRIVATE MESSAGE, API CALL ERROR');
+		console.warn(err.message ?? JSON.stringify(err));
+		ctx.reply(
+			translator(ctx.langConfig.translationLanguage, 'wordNotFound') ??
+				'Not found',
+		);
 	}
 };
 

@@ -50,7 +50,7 @@ export function renderDictionaryApiResponse(rowWord: wordDictionaryApiResp) {
 	);
 	let result = wrapByBold(word, true);
 	if (transcription) {
-		result += wrapByItalic(transcription, true) + '\n'
+		result += wrapByItalic(transcription, true) + '\n';
 	}
 	result += meaningsHtml;
 	return result;
