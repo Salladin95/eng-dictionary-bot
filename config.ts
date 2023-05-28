@@ -1,1 +1,0 @@
-export const config = { botToken: Deno.env.get('BOT_TOKEN') ?? '' };
