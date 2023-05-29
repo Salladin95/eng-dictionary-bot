@@ -29,14 +29,14 @@ export function renderYandexResponse(rowWord: Def[]) {
 			if (acc.length) {
 				acc += '\n\n';
 			} else {
-				acc += wrapKeyByBoldValueByItalic('Слово', text + ';');
+				acc += wrapByBold(text);
 				if (ts) {
-					acc += wrapKeyByBoldValueByItalic('Транскрипция', ts + ';');
+					acc += wrapByBold(ts, true);
 				}
 			}
 			acc += wrapKeyByBoldValueByItalic('Часть речи', pos + ';');
 			acc += wrapByItalic(
-				'Следующие определения относятся к это части речи!',
+				'Следующие определения относятся к данной части речи!',
 				true,
 			) + '\n';
 			acc += renderTranslations(tr);
