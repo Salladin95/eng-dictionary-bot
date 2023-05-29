@@ -29,9 +29,9 @@ export function renderYandexResponse(rowWord: Def[]) {
 			if (acc.length) {
 				acc += '\n\n';
 			} else {
-				acc += wrapByBold(text);
+				acc += wrapByBold(text, true);
 				if (ts) {
-					acc += wrapByBold(ts, true);
+					acc += wrapByBold(ts, true) + '\n';
 				}
 			}
 			acc += wrapKeyByBoldValueByItalic('Часть речи', pos + ';');
