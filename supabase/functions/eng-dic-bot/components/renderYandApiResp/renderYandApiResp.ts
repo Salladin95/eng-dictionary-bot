@@ -28,10 +28,11 @@ export function renderYandexResponse(rowWord: Def[]) {
 		(acc, { text, pos, ts, tr }) => {
 			if (acc.length) {
 				acc += '\n\n';
-			}
-			acc += wrapKeyByBoldValueByItalic('Слово', text + ';');
-			if (ts) {
-				acc += wrapKeyByBoldValueByItalic('Транскрипция', ts + ';');
+			} else {
+				acc += wrapKeyByBoldValueByItalic('Слово', text + ';');
+				if (ts) {
+					acc += wrapKeyByBoldValueByItalic('Транскрипция', ts + ';');
+				}
 			}
 			acc += wrapKeyByBoldValueByItalic('Часть речи', pos + ';');
 			acc += wrapByItalic(
