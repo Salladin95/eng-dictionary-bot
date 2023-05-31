@@ -1,8 +1,7 @@
 import { MyBot } from '../../contracts.ts';
 
 import {
-	onChooseBotLang,
-	onChooseTransLang,
+	onChooseUserLang,
 	onHelp,
 	onStart,
 } from '../../middlewares/commandHandlers/index.ts';
@@ -12,9 +11,7 @@ const setCommandsListeners = (bot: MyBot) => {
 
 	bot.command('help', onHelp);
 
-	bot.command('choose_bot_lang', onChooseBotLang);
-
-	bot.command('choose_trans_lang', onChooseTransLang);
+	bot.command('choose_language', onChooseUserLang);
 };
 
 export default setCommandsListeners;

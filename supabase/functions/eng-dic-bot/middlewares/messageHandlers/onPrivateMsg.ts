@@ -10,7 +10,7 @@ import sendAudios from '../../components/renderDicApiResp/getAudiosFromResp.ts';
 import translator from '../../locales/initTranslator.ts';
 
 const onPrivateMsg = async (ctx: Context) => {
-	const { message, langConfig } = ctx;
+	const { message, userLanguage } = ctx;
 
 	if (!message || !message.text) {
 		return;
@@ -21,7 +21,7 @@ const onPrivateMsg = async (ctx: Context) => {
 		const translationByDictionary = await translateByDictionaryApi(
 			message.text,
 		);
-		if (langConfig.translationLanguage === 'en') {
+		if (userLanguage === 'en') {
 			const html = renderDictionaryApiResponse(translationByDictionary);
 			ctx.reply(html, { parse_mode: 'HTML' }).then(() => {
 				sendAudios(ctx, translationByDictionary);
@@ -29,7 +29,7 @@ const onPrivateMsg = async (ctx: Context) => {
 		} else {
 			const translation = await translateByYandex(
 				text,
-				ctx.langConfig.translationLanguage,
+				userLanguage,
 			);
 			const { def } = translation;
 			if (def.length) {
@@ -38,7 +38,7 @@ const onPrivateMsg = async (ctx: Context) => {
 				);
 			} else {
 				ctx.reply(
-					translator(ctx.langConfig.translationLanguage, 'wordNotFound') ??
+					translator(userLanguage, 'wordNotFound') ??
 						'Not found',
 				);
 			}
@@ -47,7 +47,7 @@ const onPrivateMsg = async (ctx: Context) => {
 		console.warn('ON PRIVATE MESSAGE, API CALL ERROR');
 		console.warn(err.message ?? JSON.stringify(err));
 		ctx.reply(
-			translator(ctx.langConfig.translationLanguage, 'wordNotFound') ??
+			translator(userLanguage, 'wordNotFound') ??
 				'Not found',
 		);
 	}

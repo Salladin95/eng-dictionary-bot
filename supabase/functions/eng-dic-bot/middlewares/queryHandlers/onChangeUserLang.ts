@@ -3,16 +3,16 @@ import translator from '../../locales/initTranslator.ts';
 import { LangOption } from '../../services/dbFunctions/user/user.contracts.ts';
 import { updateUserRecord } from '../../services/dbFunctions/user/user.ts';
 
-const onChangeTransLang = async (
+const onChangeUserLang = async (
 	ctx: MyContext,
 	option: LangOption,
 ) => {
 	const { from } = ctx;
 	if (from) {
-		await updateUserRecord({ translationLang: option }, from.id);
+		await updateUserRecord({ userLanguage: option }, from.id);
 		const msg = translator(
 			option,
-			'queryReplyTransLangChange',
+			'queryReplyUserLangChange',
 		);
 		if (msg) {
 			await ctx.answerCallbackQuery({
@@ -22,4 +22,4 @@ const onChangeTransLang = async (
 	}
 };
 
-export default onChangeTransLang;
+export default onChangeUserLang;

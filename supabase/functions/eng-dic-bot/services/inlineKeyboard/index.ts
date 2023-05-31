@@ -1,4 +1,3 @@
-import { selectBotLang } from './selectBotLang.ts';
-import { selectTranslatesLang } from './selectTranslatesLang.ts';
+import { selectUserLang } from './selectUserLanguage.ts';
 
-export { selectBotLang, selectTranslatesLang };
+export { selectUserLang };

@@ -6,7 +6,7 @@ import {
 } from '../../services/dbFunctions/user/user.ts';
 
 const onStart = async (ctx: Context) => {
-	const { from, langConfig } = ctx;
+	const { from, userLanguage } = ctx;
 	if (from) {
 		const user = await getUserRecord(from?.id);
 		if (!user) {
@@ -15,7 +15,7 @@ const onStart = async (ctx: Context) => {
 				firstName: from.first_name,
 			});
 		}
-		const reply = translator(langConfig.botLanguage, 'start', {
+		const reply = translator(userLanguage, 'start', {
 			name: from.first_name ?? 'User',
 		});
 		reply && ctx.reply(reply);

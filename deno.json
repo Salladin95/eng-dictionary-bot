@@ -4,7 +4,7 @@
     "dev": "supabase functions serve --no-verify-jwt --env-file ./supabase/functions/eng-dic-bot/.env eng-dic-bot",
     "deploy": "supabase functions deploy eng-dic-bot --no-verify-jwt --project-ref yxruvgnitxbcbmiaovdz",
     "setSecrets": "supabase secrets set --env-file ./supabase/functions/eng-dic-bot/.env --project-ref yxruvgnitxbcbmiaovdz",
-    "gen": "supabase gen types typescript --schema public > ./supabase/functions/eng-dic-bot/types/supabase.ts --project-id yxruvgnitxbcbmiaovdz"
+    "gen": "supabase gen types typescript --project-id yxruvgnitxbcbmiaovdz --schema public > ./supabase/functions/eng-dic-bot/types/supabase.ts"
 
   },
   "compilerOptions": {

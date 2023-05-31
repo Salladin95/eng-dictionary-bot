@@ -1,4 +1,3 @@
-import onChangeBotLang from './onChangeBotLang.ts';
-import onChangeTransLang from './onChangeTransLang.ts';
+import onChangeTransLang from './onChangeUserLang.ts';
 
-export { onChangeBotLang, onChangeTransLang };
+export { onChangeTransLang };

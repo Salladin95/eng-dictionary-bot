@@ -1,11 +1,7 @@
 import { config } from '../../config.ts';
 import { MyBot } from '../../contracts.ts';
 import {
-	Api,
-	Bot,
-	Context,
-	RawApi,
-	serve,
+serve,
 	webhookCallback,
 } from '../../deps.ts';
 

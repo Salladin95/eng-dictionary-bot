@@ -4,9 +4,9 @@ export type LangOption = 'ru' | 'en';
 export type WithLangOptions<T> =
 	& Omit<
 		T,
-		'botLang' | 'translationLang'
+		'userLanguage'
 	>
-	& { botLang?: LangOption; translationLang?: LangOption };
+	& { userLanguage?: LangOption };
 
 export type User = WithLangOptions<Database['public']['Tables']['user']['Row']>;
 export type CreateUserDto = Pick<User, 'firstName' | 'telegramId'>;
