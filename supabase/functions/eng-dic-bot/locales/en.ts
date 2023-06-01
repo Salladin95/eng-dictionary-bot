@@ -6,4 +6,9 @@ export const enTranslation = {
 	selectUserLang: 'Select translation\'s language.',
 	queryReplyUserLangChange: 'Your preferred language is changed!',
 	wordNotFound: 'Word is not found, try another one...',
+	partOfSpeech: 'Part of speech',
+	relatedTo: 'The following definitions are related to this part of speech!',
+	definition: 'definition',
+	synonyms: 'synonyms',
+	example: 'example'
 };

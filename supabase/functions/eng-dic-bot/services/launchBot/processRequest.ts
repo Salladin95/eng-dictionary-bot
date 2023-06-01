@@ -1,9 +1,6 @@
 import { config } from '../../config.ts';
 import { MyBot } from '../../contracts.ts';
-import {
-serve,
-	webhookCallback,
-} from '../../deps.ts';
+import { serve, webhookCallback } from '../../deps.ts';
 
 const processRequest = (
 	bot: MyBot,

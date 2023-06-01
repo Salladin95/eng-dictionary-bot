@@ -1,7 +1,5 @@
 import { MyBot } from '../../contracts.ts';
-import {
-	onChangeTransLang,
-} from '../../middlewares/queryHandlers/index.ts';
+import { onChangeTransLang } from '../../middlewares/queryHandlers/index.ts';
 
 const setQueryListeners = (bot: MyBot) => {
 	bot.callbackQuery(

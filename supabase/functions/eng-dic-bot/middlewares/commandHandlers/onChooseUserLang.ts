@@ -1,6 +1,6 @@
 import { MyContext } from '../../contracts.ts';
 import translator from '../../locales/initTranslator.ts';
-import { selectUserLang } from "../../services/inlineKeyboard/index.ts";
+import { selectUserLang } from '../../services/inlineKeyboard/index.ts';
 
 const onChooseUserLang = (ctx: MyContext) => {
 	const { userLanguage } = ctx;

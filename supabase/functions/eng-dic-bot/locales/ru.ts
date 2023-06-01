@@ -6,4 +6,9 @@ export const ruTranslation = {
 	selectUserLang: 'Выбрать предпочтительный язык...',
 	queryReplyUserLangChange: 'Ваш предпочтительный язык изменен!',
 	wordNotFound: 'Слово не найдено, попробуйте другое слово...',
+	partOfSpeech: 'Часть речи',
+	relatedTo: 'Следующие определения относятся к данный части речи!',
+	definition: 'Определение',
+	synonyms: 'синонимы',
+	example: 'пример'
 };
