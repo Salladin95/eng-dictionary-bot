@@ -10,5 +10,5 @@ export const ruTranslation = {
 	relatedTo: 'Следующие определения относятся к данный части речи!',
 	definition: 'Определение',
 	synonyms: 'синонимы',
-	example: 'пример'
+	example: 'пример',
 };

@@ -1,28 +1,19 @@
-import { MyContext } from "../../../contracts.ts";
-import translator from "../../../locales/initTranslator.ts";
-import { handleEngDicReq } from "./handleEngDicReq.ts";
-import { handleRuDicReq } from "./handleRuDicReq.ts";
+import { MyContext } from '../../../contracts.ts';
+import { handleWordNotFound } from '../../handleErrors/wordNotFound.ts';
+import { handleEngDicReq } from './handleEngDicReq.ts';
+import { handleRuDicReq } from './handleRuDicReq.ts';
 
-const onPrivateMsg = (ctx: MyContext) => {
-	const { message, userLanguage } = ctx;
-
-	if (!message || !message.text) {
-		return;
-	}
+const onPrivateMsg = async (ctx: MyContext) => {
+	const { userLanguage } = ctx;
 
 	try {
 		if (userLanguage === 'en') {
-			handleEngDicReq(ctx);
+			await handleEngDicReq(ctx);
 		} else {
-			handleRuDicReq(ctx);
+			await handleRuDicReq(ctx);
 		}
 	} catch (err) {
-		console.warn('ON PRIVATE MESSAGE, API CALL ERROR');
-		console.warn(err.message ?? JSON.stringify(err));
-		ctx.reply(
-			translator(userLanguage, 'wordNotFound') ??
-				'Not found',
-		);
+		handleWordNotFound(ctx, err)
 	}
 };
 

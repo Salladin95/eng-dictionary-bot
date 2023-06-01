@@ -1,4 +1,4 @@
-import { translateByDictionaryApi } from "../../../api/index.ts";
+import { translateByDictionaryApi } from '../../../api/index.ts';
 import { sendAudios } from '../../../components/renderWord/getAudiosFromResp.ts';
 import { renderWord } from '../../../components/renderWord/renderWord.ts';
 import { MyContext } from '../../../contracts.ts';

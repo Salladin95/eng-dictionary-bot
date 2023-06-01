@@ -22,7 +22,10 @@ export function renderWord(
 		}
 		return definitions.reduce(
 			(acc, { definition, example, synonyms }) => {
-				acc += wrapKeyByBoldValueByItalic(translator(lang, 'definition') ?? 'definition', definition);
+				acc += wrapKeyByBoldValueByItalic(
+					translator(lang, 'definition') ?? 'definition',
+					definition,
+				);
 				if (synonyms?.length) {
 					acc += wrapKeyByBoldValueByItalic(
 						translator(lang, 'synonyms') ?? 'synonyms',
@@ -30,7 +33,11 @@ export function renderWord(
 					);
 				}
 				if (example) {
-					acc += wrapKeyByBoldValueByItalic(translator(lang, 'example') ?? 'example', example, true);
+					acc += wrapKeyByBoldValueByItalic(
+						translator(lang, 'example') ?? 'example',
+						example,
+						true,
+					);
 				} else {
 					acc += '\n';
 				}
@@ -42,9 +49,13 @@ export function renderWord(
 
 	const meaningsHtml = meanings.reduce(
 		(acc, { partOfSpeech, ruDefs, engDefs }) => {
-			acc += wrapKeyByBoldValueByItalic(translator(lang, 'partOfSpeech') ?? 'Part of speech', partOfSpeech + ';');
+			acc += wrapKeyByBoldValueByItalic(
+				translator(lang, 'partOfSpeech') ?? 'Part of speech',
+				partOfSpeech + ';',
+			);
 			acc += wrapByItalic(
-				translator(lang, 'relatedTo') ?? 'The following definitions are related to this part of speech!',
+				translator(lang, 'relatedTo') ??
+					'The following definitions are related to this part of speech!',
 				true,
 			) + '\n';
 			const defs = lang === 'en' ? engDefs : ruDefs;

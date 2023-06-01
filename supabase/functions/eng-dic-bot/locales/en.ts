@@ -10,5 +10,5 @@ export const enTranslation = {
 	relatedTo: 'The following definitions are related to this part of speech!',
 	definition: 'definition',
 	synonyms: 'synonyms',
-	example: 'example'
+	example: 'example',
 };
